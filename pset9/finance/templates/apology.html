@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Apology
+{% endblock %}
+
+{% block main %}
+
+    {% if top==666 %}
+        <img alt="{{ top }}" class="border img-fluid" src="http://memegen.link/custom/{{ top | urlencode }}/{{ bottom | urlencode }}.jpg?alt=https://cdn.digg.com/images/4f2e692f97a543b0a5b92e16f791403f_fd726b7806ab4ab2a70da8519e600373_1_original.jpeg" title="{{ top }}">
+    {% elif top==667%}
+        <img alt="{{ top }}" class="border img-fluid" src="http://memegen.link/custom/{{ top | urlencode }}/{{ bottom | urlencode }}.jpg?alt=https://pyxis.nymag.com/v1/imgs/dc2/a7a/a15eec828a666f747bd95684cd7643bce5-wyatt-koch-01.rsquare.w700.jpg" title="{{ top }}">
+    {% elif top==400%}
+        <img alt="{{ top }}" class="border img-fluid" src="http://memegen.link/custom/{{ top | urlencode }}/{{ bottom | urlencode }}.jpg?alt=https://i.ytimg.com/vi/VS7cTJjVZjs/maxresdefault.jpg" title="{{ top }}">
+    {% elif top==669%}
+        <img alt="{{ top }}" class="border img-fluid" src="http://memegen.link/custom/{{ top | urlencode }}/{{ bottom | urlencode }}.jpg?alt=https://whatstheaction.files.wordpress.com/2017/12/wyatt5.png" title="{{ top }}">
+    {% elif top==670%}
+        <img alt="{{ top }}" class="border img-fluid" src="http://memegen.link/custom/{{ top | urlencode }}/{{ bottom | urlencode }}.jpg?alt=https://pbs.twimg.com/media/DcDFSCYVAAA3RoK?format=jpg&name=small" title="{{ top }}">
+
+    {% else %}
+        <!-- https://memegen.link/ -->
+        <img alt="{{ top }}" class="border img-fluid" src="http://memegen.link/custom/{{ top | urlencode }}/{{ bottom | urlencode }}.jpg?alt=https://media.gq.com/photos/5a3aca4b2dbed9473d0518cf/1:1/w_614,h_614,c_limit/Wyatt-Ingraham-Koch.jpg" title="{{ top }}">
+
+    {% endif %}
+
+{% endblock %}

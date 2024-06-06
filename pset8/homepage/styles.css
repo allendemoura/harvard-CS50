@@ -1,0 +1,59 @@
+.img-fluid {
+    max-height: 85vh;
+}
+
+.img-thumbnail {
+    width: 30vw;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#shine {
+    font-weight: bolder;
+}
+
+.title-word {
+    animation: color-animation .5s linear infinite;
+}
+
+.title-word-1 {
+    --color-1: #0F0F0F;
+    --color-2: #FF0;
+    --color-3: #FF5733;
+}
+
+@keyframes color-animation {
+    0% {
+        color: var(--color-1)
+    }
+
+    32% {
+        color: var(--color-1)
+    }
+
+    33% {
+        color: var(--color-2)
+    }
+
+    65% {
+        color: var(--color-2)
+    }
+
+    66% {
+        color: var(--color-3)
+    }
+
+    99% {
+        color: var(--color-3)
+    }
+
+    100% {
+        color: var(--color-1)
+    }
+}

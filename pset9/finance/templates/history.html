@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+
+    <table class="table table-hover table-striped-columns">
+        <thead class="thead-dark">
+            <tr>
+                <th>Type</th>
+                <th>Time</th>
+                <th>Symbol</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Net</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tx in history %}
+            {% if tx.shares > 0 %}
+            <tr class="table-danger">
+                <td>Buy
+            {% else %}
+            <tr class="table-success">
+                <td>Sell
+                {% endif %}
+                </td>
+                <td>{{ tx.time }}</td>
+                <td>{{ tx.symbol }}</td>
+                <td>{{ tx.shares }}</td>
+                <td>{{ tx.price | usd}}</td>
+                <td>{{ (0 - (tx.price | int) * (tx.shares | int)) | usd}}</td>
+            </tr>
+            {% endfor %}
+            <tr><td colspan=6></td></tr>
+            <tr>
+                <td colspan=4></td>
+                <td class="table-secondary"><b>Stock Value</b></td>
+                <td class="table-primary">{{ portfolio.holdings | usd}}</td>
+            </tr>
+            <tr>
+                <td colspan=4></td>
+                <td class="table-secondary"><b>Cash</b></td>
+                <td class="table-success">{{ portfolio.cash | usd}}</td>
+            </tr>
+            <tr>
+                <td colspan=4></td>
+                <td class="table-secondary"><b>Total Worth</b></td>
+                <td class="table-info">{{ portfolio.total | usd}}</td>
+            </tr>
+            <tr><td colspan=6></td></tr>
+            <tr>
+                <td colspan=4></td>
+                <td class="table-secondary"><b>Profit</b></td>
+                <td class="table-warning">{{ portfolio.profit | usd}}</td>
+            </tr>
+
+        </tbody>
+    </table>
+
+{% endblock %}

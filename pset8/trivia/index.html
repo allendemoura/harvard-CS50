@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet" />
+    <link href="styles.css" rel="stylesheet">
+    <title>Trivia!</title>
+
+</head>
+
+<body>
+    <div class="header">
+        <h1>Trivia!</h1>
+    </div>
+
+    <div class="container">
+        <div class="section">
+            <h2>Part 1: Multiple Choice </h2>
+            <hr>
+            <div class="center">
+                <h3>What is the only patrician greeting?</h3>
+                <div class="response"></div>
+                <button data-correct="false">Hello!</button>
+                <button data-correct="false">Welcome</button>
+                <button data-correct="true">Greet!</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Part 2: Free Response</h2>
+            <hr>
+            <div class="center">
+                <h3>What is finest the type of tutor?</h3>
+                <div class="response2"></div>
+                <input> <button class="submit">SUBMIT</button>
+            </div>
+
+        </div>
+    </div>
+    <script>
+        // check q1
+
+        var buttons = document.querySelectorAll("button[data-correct]");
+        var response = document.querySelector(".response")
+        buttons.forEach(function (button) {
+            button.addEventListener("click", function () {
+                if (button.dataset.correct == "false") {
+                    button.classList.add("incorrect");
+                    response.innerText = "Incorrect!";
+                }
+                else {
+                    button.classList.add("correct");
+                    response.innerText = "Correct!";
+                }
+            })
+        });
+
+        // check q2
+
+        var button = document.querySelector("button.submit");
+        var response2 = document.querySelector(".response2");
+        var input = document.querySelector("input")
+        button.addEventListener("click", function () {
+            if (input.value == "tebbonic") {
+                input.classList.add("correct");
+                response2.innerText = "Correct!";
+                document.body.classList.add("shining");
+            }
+            else {
+                input.classList.add("incorrect");
+                response2.innerText = "Incorrect!";
+            }
+        })
+
+    </script>
+</body>
+
+</html>

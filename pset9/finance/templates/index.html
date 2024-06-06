@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+
+    <table class="table table-hover table-striped-columns">
+        <thead class="thead-dark">
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Value</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for stock in portfolio %}
+            {% if stock == "holdings" %}
+                    {% break %}
+            {% endif %}
+            <form action="/sell" method="post">
+                <tr>
+                    <td>{{ stock }}</td>
+                    <td>{{ portfolio[stock].name }}</td>
+                    <td>{{ portfolio[stock].shares }}</td>
+                    <td>{{ portfolio[stock].price | usd}}</td>
+                    <td>{{ portfolio[stock].value | usd}}</td>
+                    <td>
+                        <input type="hidden" name="symbol" value="{{ stock }}">
+                        <select class="form-select" name="shares">
+                            <option selected>--</option>
+                            {% for share in range(portfolio[stock].shares) %}
+                            <option value="{{ share + 1 }}">{{ share + 1 }}</option>
+                            {% endfor %}
+                        </select>
+                        <button class="btn btn-primary" type="submit">Sell</button>
+                    </td>
+                </tr>
+            </form>
+            {% endfor %}
+            <tr><td colspan=6></td></tr>
+            <tr>
+                <td colspan=3></td>
+                <td class="table-secondary"><b>Stock Value</b></td>
+                <td class="table-primary">{{ portfolio.holdings | usd}}</td>
+            </tr>
+            <tr>
+                <td colspan=3></td>
+                <td class="table-secondary"><b>Cash</b></td>
+                <td class="table-success">{{ portfolio.cash | usd}}</td>
+            </tr>
+            <tr>
+                <td colspan=3></td>
+                <td class="table-secondary"><b>Total Worth</b></td>
+                <td class="table-info">{{ portfolio.total | usd}}</td>
+            </tr>
+            <tr><td colspan=6></td></tr>
+            <tr>
+                <td colspan=3></td>
+                <td class="table-secondary"><b>Profit</b></td>
+                <td class="table-warning">{{ portfolio.profit | usd}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+{% endblock %}
